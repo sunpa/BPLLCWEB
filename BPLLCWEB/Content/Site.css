@@ -1,0 +1,717 @@
+﻿body {
+    /*padding-top: 50px;
+    padding-bottom: 20px;*/
+    /*background-color: #4E78A0;*/
+    /*background-color: #ffffff;*/    
+    background-color: #FFF;    
+
+    /*for sticky footer*/
+    margin: 0;
+    padding: 0;
+}
+
+/*for sticky footer*/
+/* CSS for the content of page. I am giving top and bottom padding of 80px to make sure the header and footer do not overlap the content.*/
+#main { 
+    margin:0 auto; 
+    /*overflow:auto;*/ 
+    padding:80px 0; 
+    /*width:940px;*/ 
+}
+
+/*for sticky footer*/
+#footer_container { 
+    background:#20B2AA; 
+    /*border:1px solid #666;*/ 
+    bottom:0; height:36px; 
+    left:0; position:fixed; 
+    width:100%; }
+
+
+
+
+/* Set padding to keep content from hitting the edges */
+.body-content {
+    padding-left: 15px;
+    padding-right: 15px;
+}
+
+/* Set width on the form input elements since they're 100% wide by default */
+input,
+select{
+    max-width: 280px;
+}
+
+textarea {
+    max-width: 480px;
+}
+
+
+/* styles for validation helpers */
+.field-validation-error {
+    color: #b94a48;
+}
+
+.field-validation-valid {
+    display: none;
+}
+
+input.input-validation-error {
+    border: 1px solid #b94a48;
+}
+
+input[type="checkbox"].input-validation-error {
+    border: 0 none;
+}
+
+.validation-summary-errors {
+    color: #b94a48;
+}
+
+.validation-summary-valid {
+    display: none;
+}
+
+#bodycontainer {
+	/*width: 960px;*/
+	margin: 0px auto;
+	background-color: #FFF; 
+    /*border: solid;
+    border-width: 1px;*/
+}
+
+.page {
+    width: 960px;
+    margin-left: auto;
+    margin-right: auto;
+    font-family: Calibri;
+}
+
+#main {
+    /*padding: 10px 10px 10px 10px;*/
+    padding: 0 0 0 0;
+    background-color: #FFF;
+    /*border-radius: 4px 4px 0 0;*/
+    border-radius: 0 0 0 0;
+    /*-webkit-border-radius: 4px 4px 0 0;*/
+    -webkit-border-radius: 0 0 0 0;
+    /*-moz-border-radius: 4px 4px 0 0;*/
+    -moz-border-radius: 0 0 0 0;
+    width: 960px;
+    vertical-align: bottom;
+}
+
+
+footer, 
+#footer{
+
+    /*for sticky footer*/
+    /*line-height:40px;*/ 
+    margin:0 auto; 
+    /*width:940px;*/ 
+    text-align:center; 
+
+
+    /*background-color: #f0f8ff;*/
+    color: #F5FFFA;
+    /*padding: 5px 0;
+    text-align: left ;*/
+    /*line-height: normal;*/
+
+    /*width: 960px;*/
+    /*height: 4em;*/
+    margin-left: auto;
+    margin-right: auto;
+    font-family: Calibri;
+    /*margin: 0 0 30px 0;*/
+    font-size: .8em;
+    /*border-radius: 4px 4px 0 0;*/
+    border-radius: 0 0 0 0;
+    /*-webkit-border-radius: 4px 4px 0 0;*/
+    -webkit-border-radius: 0 0 0 0;
+    /*-moz-border-radius: 4px 4px 0 0;*/
+    -moz-border-radius: 0 0 0 0;
+    vertical-align: top;
+}
+
+
+/*fieldset*/
+#homepagefieldset {
+    /*border: 3px solid #ddd;
+    padding: 0 1.4em 1.4em 1.4em;
+    margin: 0 0 1.5em 0;*/
+
+    height: 278px;
+    /*align-items: stretch;*/  
+    border: 2px solid #000080; 
+    padding: 41px 1.4em 1.4em 1.4em; 
+    margin: -4px 0 0 0; 
+    /*background-color: #F5FFFA;*/
+    background-color: #339966;
+    /*background-color: #67bcdb;*/
+    /*background-color: #ff8f09;*/
+}
+
+.homepage-links {
+    height: 57.5px;
+}
+
+.editor-field {
+    margin: 0.5em 0 0 0;
+}
+
+#navpagefieldset { 
+    border: 2px solid #000080; 
+    padding: 1.4em 1.4em 1.4em 1.4em; 
+    margin: 0 0 0 0; 
+    /*background-color: #F8F8FF;*/
+    /*background-color: #F5FFFA;*/
+    background-color: #F5FFFA;
+    width: 960px;  /*for FireFox*/
+}
+
+
+/*Box*/
+
+.box {
+	-moz-box-shadow:inset 0px 1px 0px 0px #fceaca;
+	-webkit-box-shadow:inset 0px 1px 0px 0px #fceaca;
+	box-shadow:inset 0px 1px 0px 0px #fceaca;
+	background:-webkit-gradient( linear, left top, left bottom, color-stop(0.05, #ffce79), color-stop(1, #eeaf41) );
+	background:-moz-linear-gradient( center top, #ffce79 5%, #eeaf41 100% );
+	filter:progid:DXImageTransform.Microsoft.gradient(startColorstr='#ffce79', endColorstr='#eeaf41');
+	background-color:#ffce79;
+	-moz-border-radius:6px;
+	-webkit-border-radius:6px;
+	border-radius:6px;
+	border:1px solid #eeb44f;
+	display:inline-block;
+	color:#330099;
+	font-family:arial;
+	font-size:15px;
+	font-weight:bold;
+	padding:6px 14px;
+	text-decoration:none;
+	text-shadow:1px 1px 0px #ce8e28;
+    width: 185px;
+}
+.box:hover {
+	background:-webkit-gradient( linear, left top, left bottom, color-stop(0.05, #eeaf41), color-stop(1, #ffce79) );
+	background:-moz-linear-gradient( center top, #eeaf41 5%, #ffce79 100% );
+	filter:progid:DXImageTransform.Microsoft.gradient(startColorstr='#eeaf41', endColorstr='#ffce79');
+	background-color:#eeaf41;
+    cursor: pointer; 
+}
+.box:active {
+	position:relative;
+	top:1px;
+}
+.boxsubmit {
+	-moz-box-shadow:inset 0px 1px 0px 0px #fceaca;
+	-webkit-box-shadow:inset 0px 1px 0px 0px #fceaca;
+	box-shadow:inset 0px 1px 0px 0px #fceaca;
+	background:-webkit-gradient( linear, left top, left bottom, color-stop(0.05, #ffce79), color-stop(1, #eeaf41) );
+	background:-moz-linear-gradient( center top, #ffce79 5%, #eeaf41 100% );
+	filter:progid:DXImageTransform.Microsoft.gradient(startColorstr='#ffce79', endColorstr='#eeaf41');
+	background-color:#ffce79;
+	-moz-border-radius:6px;
+	-webkit-border-radius:6px;
+	border-radius:6px;
+	border:1px solid #eeb44f;
+	display:inline-block;
+	color:#330099;
+	font-family:arial;
+	font-size:16px;
+	font-weight:bold;
+	padding:6px 14px;
+	text-decoration:none;
+	text-shadow:1px 1px 0px #ce8e28;
+    width: 95px;
+    text-align: center;
+}
+.boxsubmit:hover {
+	background:-webkit-gradient( linear, left top, left bottom, color-stop(0.05, #eeaf41), color-stop(1, #ffce79) );
+	background:-moz-linear-gradient( center top, #eeaf41 5%, #ffce79 100% );
+	filter:progid:DXImageTransform.Microsoft.gradient(startColorstr='#eeaf41', endColorstr='#ffce79');
+	background-color:#eeaf41;
+    cursor: pointer; 
+}
+.boxsubmit:active {
+	position:relative;
+	top:1px;
+}
+
+.boxdownload {
+	-moz-box-shadow:inset 0px 1px 0px 0px #fceaca;
+	-webkit-box-shadow:inset 0px 1px 0px 0px #fceaca;
+	box-shadow:inset 0px 1px 0px 0px #fceaca;
+	background:-webkit-gradient( linear, left top, left bottom, color-stop(0.05, #ffce79), color-stop(1, #eeaf41) );
+	background:-moz-linear-gradient( center top, #ffce79 5%, #eeaf41 100% );
+	filter:progid:DXImageTransform.Microsoft.gradient(startColorstr='#ffce79', endColorstr='#eeaf41');
+	background-color:#ffce79;
+	-moz-border-radius:6px;
+	-webkit-border-radius:6px;
+	border-radius:6px;
+	border:1px solid #eeb44f;
+	display:inline-block;
+	color:#330099;
+	font-family:arial;
+	font-size:15px;
+	font-weight:bold;
+	padding:6px 14px;
+	text-decoration:none;
+	text-shadow:1px 1px 0px #ce8e28;
+    width: 226px;
+}
+.boxdownload:hover {
+	background:-webkit-gradient( linear, left top, left bottom, color-stop(0.05, #eeaf41), color-stop(1, #ffce79) );
+	background:-moz-linear-gradient( center top, #eeaf41 5%, #ffce79 100% );
+	filter:progid:DXImageTransform.Microsoft.gradient(startColorstr='#eeaf41', endColorstr='#ffce79');
+	background-color:#eeaf41;
+    cursor: pointer; 
+}
+.boxdownload:active {
+	position:relative;
+	top:1px;
+}
+
+/* Navigation Menu */
+
+html, body, div, span, applet, object, iframe, h1, h2, h3, h4, h5, h6, p, blockquote, pre, a, abbr, acronym, address, big, cite, code, del, dfn, em, img, ins, kbd, q, s, samp, small, strike, strong, sub, sup, tt, var, b, u, i, center, dl, dt, dd, ol, ul, li, fieldset, form, label, legend, table, caption, tbody, tfoot, thead, tr, th, td, article, aside, canvas, details, embed, figure, figcaption, footer, header, hgroup, menu, nav, output, ruby, section, summary, time, mark, audio, video {
+  margin: 0;
+  padding: 0;
+  border: 0;
+  font-size: 100%;
+  font: inherit;
+  vertical-align: baseline;
+  outline: none;
+  -webkit-font-smoothing: antialiased;
+  -webkit-text-size-adjust: 100%;
+  -webkit-box-sizing: border-box;
+  -moz-box-sizing: border-box;
+  box-sizing: border-box;
+}
+
+html { height: 101%; }
+
+
+/*body { background: #eaeaea url('images/bg.png'); font-size: 62.5%; line-height: 1; font-family: Arial, Tahoma, sans-serif; padding-bottom: 60px; }*/
+
+article, aside, details, figcaption, figure, footer, header, hgroup, menu, nav, section { display: block; }
+ol, ul { list-style: none; }
+
+blockquote, q { quotes: none; }
+blockquote:before, blockquote:after, q:before, q:after { content: ''; content: none; }
+strong { font-weight: bold; } 
+
+table { border-collapse: collapse; border-spacing: 0; }
+img { border: 0; max-width: 100%; }
+
+#ddmenu {
+  display: block;
+  width: 100%;
+  height: 30px;
+  margin: 0 auto;
+  /*padding: 0 15px;*/
+  padding: 0 0;
+  background: #E0FFFF;
+
+  /*border-radius: 6px;*/
+  border-radius: 0;
+  border: 1px solid rgba(0, 0, 0, 0.15);
+  box-shadow: 0 1px 1px rgba(20, 20, 20, 0.2);
+  cursor: pointer;
+  outline: none;
+  font-weight: normal;
+  color: #8aa8bd;
+}
+
+#ddmenu li { 
+  display: block; 
+  position: relative; 
+  float: left; 
+  font-size: 1.00em; 
+  /*text-shadow: 1px 1px 0 #fff;*/ 
+  /*border-right: 1px solid #dae0e5;*/ 
+  
+  /*in order to be on top of accordion header*/
+  z-index: 1;
+}
+
+#ddmenu li a {
+  display: block;
+  float: left;
+  padding: 0 12px;
+  line-height: 28px;
+  font-weight: normal;
+  text-decoration: none;
+  color: #6c87c0;
+  -webkit-transition: all 0.2s linear;
+  -moz-transition: all 0.2s linear;
+  -o-transition: all 0.2s linear;
+  transition: all 0.2s linear;
+}
+#ddmenu li:hover > a { color: #7180a0; background: #98F5FF;}
+#ddmenu ul li:hover > a { color: #7180a0; background: #ADFF2F; width: 182px; }
+
+#ddmenu ul {
+  position: absolute;
+  top: 40px;
+  width: 184px;
+  background: #fff;
+  display: none;
+  margin: 0;
+  padding: 7px 0;
+  list-style: none;
+  border-radius: 3px;
+  border: 1px solid rgba(0, 0, 0, 0.2);
+  box-shadow: 5px 5px 15px  #080a80;
+}
+
+
+/* tooltip arrow */
+#ddmenu ul:after {
+  content: "";
+  width: 0;
+  height: 0;
+  position: absolute;
+  bottom: 100%;
+  left: 8px;
+  border-width: 0 8px 8px 8px;
+  border-style: solid;
+  border-color: #fff transparent; 
+}
+
+#ddmenu ul:before {
+  content: "";
+  width: 0;
+  height: 0;
+  position: absolute;
+  bottom: 100%;
+  left: 4px;
+  border-width: 0 10px 10px 10px;
+  border-style: solid;
+  border-color: rgba(0, 0, 0, 0.1) transparent;  
+}
+
+#ddmenu ul li { 
+  display: block; 
+  width: 100%; 
+  font-size: 0.9em; 
+  text-shadow: 1px 1px 0 #fff;
+}
+
+
+/*Login Box*/
+
+nav ul {
+  margin: 0;
+  padding: 0;
+  list-style: none;
+  position: relative;
+  float: right;
+  background: #eee;
+  border-bottom: 1px solid #fff;
+  -moz-border-radius: 3px;
+  -webkit-border-radius: 3px;
+  border-radius: 3px; 
+}
+
+nav li {
+  float: left;          
+}
+
+nav #login {
+  border-right: 1px solid #ddd;
+  -moz-box-shadow: 1px 0 0 #fff;
+  -webkit-box-shadow: 1px 0 0 #fff;
+  box-shadow: 1px 0 0 #fff;  
+}
+
+nav #login-trigger,
+nav #signup a {
+  display: inline-block;
+  *display: inline;
+  *zoom: 1;
+  height: 25px;
+  line-height: 25px;
+  font-weight: bold;
+  padding: 0 8px;
+  text-decoration: none;
+  color: #000080;
+  text-shadow: 0 1px 0 #fff; 
+}
+
+nav #signup a {
+  -moz-border-radius: 0 3px 3px 0;
+  -webkit-border-radius: 0 3px 3px 0;
+  border-radius: 0 3px 3px 0;
+}
+
+nav #login-trigger {
+  -moz-border-radius: 3px 0 0 3px;
+  -webkit-border-radius: 3px 0 0 3px;
+  border-radius: 3px 0 0 3px;
+}
+
+nav #login-trigger:hover,
+nav #login .active,
+nav #signup a:hover {
+  background: #FFF0F5;
+}
+
+nav #login-content {
+  display: none;
+  position: absolute;
+  top: 24px;
+  right: 0;
+  z-index: 999;    
+  background: #00FA9A;
+  background-image: -webkit-gradient(linear, left top, left bottom, from(#fff), to(#98FB98));
+  background-image: -webkit-linear-gradient(top, #fff, #98FB98);
+  background-image: -moz-linear-gradient(top, #fff, #98FB98);
+  background-image: -ms-linear-gradient(top, #fff, #98FB98);
+  background-image: -o-linear-gradient(top, #fff, #98FB98);
+  background-image: linear-gradient(top, #fff, #98FB98);  
+  padding: 15px;
+  -moz-box-shadow: 0 2px 2px -1px rgba(0,0,0,.9);
+  -webkit-box-shadow: 0 2px 2px -1px rgba(0,0,0,.9);
+  box-shadow: 5px 5px 15px -1px rgba(0,0,0,.9);
+  -moz-border-radius: 3px 0 3px 3px;
+  -webkit-border-radius: 3px 0 3px 3px;
+  border-radius: 3px 0 3px 3px;
+}
+
+nav li #login-content {
+  right: 0;
+  width: 250px;  
+}
+
+/*--------------------*/
+
+#inputs input {
+  background: #F5FFFA;
+  padding: 6px 5px;
+  margin: 0 0 5px 0;
+  width: 188px;
+  border: 1px solid #ccc;
+  -moz-border-radius: 3px;
+  -webkit-border-radius: 3px;
+  border-radius: 3px;
+  -moz-box-shadow: 0 1px 1px #ccc inset;
+  -webkit-box-shadow: 0 1px 1px #ccc inset;
+  box-shadow: 0 1px 1px #ccc inset;
+}
+
+#inputs input:focus {
+  background-color: #fff;
+  border-color: #e8c291;
+  outline: none;
+  -moz-box-shadow: 0 0 0 1px #e8c291 inset;
+  -webkit-box-shadow: 0 0 0 1px #e8c291 inset;
+  box-shadow: 0 0 0 1px #e8c291 inset;
+}
+
+/*--------------------*/
+
+#login #actions {
+  margin: 10px 0 0 0;
+}
+
+#login #submit {		
+  background-color: #d14545;
+  background-image: -webkit-gradient(linear, left top, left bottom, from(#e97171), to(#d14545));
+  background-image: -webkit-linear-gradient(top, #e97171, #d14545);
+  background-image: -moz-linear-gradient(top, #e97171, #d14545);
+  background-image: -ms-linear-gradient(top, #e97171, #d14545);
+  background-image: -o-linear-gradient(top, #e97171, #d14545);
+  background-image: linear-gradient(top, #e97171, #d14545);
+  -moz-border-radius: 3px;
+  -webkit-border-radius: 3px;
+  border-radius: 3px;
+  text-shadow: 0 1px 0 rgba(0,0,0,.5);
+  -moz-box-shadow: 0 0 1px rgba(0, 0, 0, 0.3), 0 1px 0 rgba(255, 255, 255, 0.3) inset;
+  -webkit-box-shadow: 0 0 1px rgba(0, 0, 0, 0.3), 0 1px 0 rgba(255, 255, 255, 0.3) inset;
+  box-shadow: 0 0 1px rgba(0, 0, 0, 0.3), 0 1px 0 rgba(255, 255, 255, 0.3) inset;    
+  border: 1px solid #7e1515;
+  float: left;
+  height: 30px;
+  padding: 0;
+  width: 100px;
+  cursor: pointer;
+  font: bold 14px Arial, Helvetica;
+  color: #fff;
+}
+
+#login #submit:hover,
+#login #submit:focus {		
+  background-color: #e97171;
+  background-image: -webkit-gradient(linear, left top, left bottom, from(#d14545), to(#e97171));
+  background-image: -webkit-linear-gradient(top, #d14545, #e97171);
+  background-image: -moz-linear-gradient(top, #d14545, #e97171);
+  background-image: -ms-linear-gradient(top, #d14545, #e97171);
+  background-image: -o-linear-gradient(top, #d14545, #e97171);
+  background-image: linear-gradient(top, #d14545, #e97171);
+}	
+
+#login #submit:active {		
+  outline: none;
+  -moz-box-shadow: 0 1px 4px rgba(0, 0, 0, 0.5) inset;
+  -webkit-box-shadow: 0 1px 4px rgba(0, 0, 0, 0.5) inset;
+  box-shadow: 0 1px 4px rgba(0, 0, 0, 0.5) inset;		
+}
+
+#login #submit::-moz-focus-inner {
+  border: none;
+}
+
+#login label {
+  float: right;
+  line-height: 30px;
+}
+
+#login label input {
+  position: relative;
+  top: 2px;
+  right: 2px;
+}
+
+
+
+/*Index - Homepage*/
+
+#indexBanner {
+	height: 278px;
+    width: 727px;
+	background-color: #CCC;
+	margin-top: -4px;    
+	background-image:url('/images/index_mm_bg.jpg');
+    box-shadow: 0 0 0;
+}
+
+#indexMessage{
+	font-size: 19px;
+	padding: 40px 45px 25px 530px;
+	line-height: 35px;
+	text-align: right;
+
+}
+
+#indexMessage a{
+	display: block;
+	background-color: #00aeef;
+	border: 1px solid #5cadcb;
+	color: #fff;
+	width: 110px;
+	font-size: 13px;
+	text-decoration: none;
+	text-align: center;
+	margin: 10px  0px 0px 30px;
+	text-transform: uppercase;
+}
+
+.indexBox {
+	width: 320px;
+	height: 170px;
+	margin: 0px;
+}
+
+#indexBox1 {
+	background-color: #e44424;
+	float: left;
+}
+
+#indexBox2 {
+	background-color: #67bcdb;
+	float: left;
+}
+
+#indexBox3 {
+	background-color: #ff8f09;
+	float: left;
+}
+
+.indexBoxHeading {
+	margin: 10px 20px;
+	font-size: 18px;
+	font-weight: 700;
+	color: #fff;
+}
+
+.indexBoxCopy {
+	margin: 10px 20px;
+	font-size: 16px;
+}
+
+.indexBoxCopyLink {
+	margin-top: 17px;
+}
+
+.indexBoxCopyLink a {
+	color: #fff;
+}
+
+.indexBoxCopyLink a:hover {
+	text-decoration: none;
+}
+
+
+/*Nav Pages Texts*/
+
+.navHeader {
+    font-family: Arial;
+	font-size: 18px;
+	font-weight: bold;
+	color: #637095;
+    height: 28px;
+}
+
+.navBody {
+    font-family: Arial;
+	font-size: 12px;
+	font-weight: normal;
+	color: #000000;
+}
+
+#navBodyLi {
+    margin-left: 25px;
+    list-style-type: disc;
+}
+
+
+
+
+/*For Accordion*/
+
+h3 {
+    width: 910px;
+}
+
+
+
+/*For Contact Submit*/
+
+#contactfieldset {
+    border: 3px solid #ddd;
+    padding: 0 1.4em 1.4em 1.4em;
+    margin: 0 0 0.4em 0;
+    width: 560px;
+}
+
+
+.legend {
+    color: #0000FF;
+}
+
+.display-label, 
+.editor-label {
+    margin: 1em 0 0 0;
+}
+
+
+
+.top_link {
+    margin-left: 35px;
+    color: #FFD700;
+    cursor: pointer; 
+}

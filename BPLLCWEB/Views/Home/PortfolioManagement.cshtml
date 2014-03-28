@@ -1,0 +1,54 @@
+﻿
+@{
+    ViewBag.Title = "Portfolio Management";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<fieldset id="navpagefieldset">
+
+    <div class="navHeader">
+        Portfolio Management
+    </div>
+
+    <div id="navBody">
+
+        <table>
+
+            @*not template begin*@
+
+            <tr>
+                <td style="width: 620px">
+                    Business Partners can provide your organization with both the lending capacity<br />
+                    to grow loans and the asset management services to maintain portfolio profitability.<br />
+                    There’s no need to invest in costly infrastructure to manage your loan risk - we handle
+                    everything, including:
+
+                    <br /><br />
+
+                    <ul>
+                        <li id="navBodyLi">Periodic analysis of borrower financial performance and credit rating</li>
+                        <li id="navBodyLi">Loan asset valuation</li>
+                        <li id="navBodyLi">Loan risk rating to effectively categorize your risk levels</li>
+                        <li id="navBodyLi">Loan covenant monitoring</li>
+                    </ul>
+
+                    <br />
+
+                    @Html.ActionLink("Click here", "ContactUs", "ContactUs", new { contactcode = "osbal" }, null)
+                    to be contacted by one of our lending experts to discuss your organization’s<br />
+                    portfolio management needs.
+
+                </td>
+                <td style="vertical-align: top;">
+                    <img src="/images/Services/Portfolio management.jpg" width="280" title="Portfolio Management" />
+                </td>
+            </tr>
+
+
+            @*not template end*@
+
+        </table>
+
+    </div>
+
+</fieldset>

@@ -1,0 +1,144 @@
+﻿
+@{
+    ViewBag.Title = "Contacts";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<fieldset id="navpagefieldset">
+
+    <div class="navHeader">
+        Contact Us
+    </div>
+
+    <div id="navBody">
+
+        <table>
+
+            @*not template begin*@
+
+            <tr>
+                <td style="width: 130px">
+                    <strong>Email:</strong>
+                </td>
+                <td style="width: 340px">
+                    
+                </td>
+                <td>
+                </td>
+            </tr>
+
+            <tr><td colspan="3" height="10"></td></tr>
+
+            <tr>
+                <td>
+                </td>
+                <td>
+                    Commercial Real Estate Loans
+                </td>
+                <td>
+                    @Html.ActionLink("Lending", "ContactUs", new { contactcode = "crel" }, null)
+                    &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                    @Html.ActionLink("Servicing", "ContactUs", new { contactcode = "cres" }, null)
+            </tr>
+
+            <tr><td colspan="3" height="20"></td></tr>
+
+            <tr>
+                <td></td>
+                <td>
+                    SBA Guaranteed Loans
+                </td>
+                <td>
+                    @Html.ActionLink("Lending", "ContactUs", new { contactcode = "sbal" }, null)
+                    &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                    @Html.ActionLink("Servicing", "ContactUs", new { contactcode = "sbas" }, null)                                
+                </td>
+            </tr>
+
+            <tr><td colspan="3" height="20"></td></tr>
+
+            <tr>
+                <td></td>
+                <td>
+                    Other Small Business Loans and Lines of Credit
+                </td>
+                <td>
+                    @Html.ActionLink("Lending", "ContactUs", new { contactcode = "osbal" }, null)
+                    &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                    @Html.ActionLink("Servicing", "ContactUs", new { contactcode = "osbas" }, null)
+                </td>                                                    
+            </tr>
+
+            <tr><td colspan="3" height="20"></td></tr>
+
+            <tr>
+                <td></td>
+                <td>
+                    Small Business Loan Credit Bureau Reporting
+                </td>
+                <td>
+                    @Html.ActionLink("Reporting", "ContactUs", new { contactcode = "r" }, null)
+                </td>
+            </tr>
+
+            <tr><td colspan="3" height="20"></td></tr>
+
+            <tr>
+                <td></td>
+                <td>
+                    Investor Relations
+                </td>
+                <td>
+                    @Html.ActionLink("IR", "ContactUs", new { contactcode = "ir" }, null)                
+                </td>
+            </tr>
+
+            <tr><td colspan="3" height="20"></td></tr>
+
+            <tr>
+                <td></td>
+                <td>
+                    Additional Info or Request
+                </td>
+                <td>
+                    @Html.ActionLink("Additional Info or Request", "ContactUs", new { contactcode = "bpc" }, null)                                    
+                </td>
+            </tr>
+
+            <tr><td colspan="3" height="20"></td></tr>
+
+            <tr>
+                <td></td>
+                <td>
+                    Web Access Questions
+                </td>
+                <td>
+                    @Html.ActionLink("Questions", "ContactUs", new { contactcode = "q" }, null)                
+                </td>
+            </tr>
+
+            <tr><td colspan="3" height="30"></td></tr>
+
+            <tr>
+                <td style="width: 120px">
+                    <strong>Mailing Address:</strong>
+                </td>
+                <td style="width: 320px">
+                    <strong>
+                        Business Partners, LLC<br>
+                        9301 Corbin Ave. Suite 1200<br>
+                        Northridge, CA 91324
+                    </strong>
+                </td>
+                <td></td>
+            </tr>
+
+            @*not template end*@
+
+        </table>
+
+    </div>
+
+</fieldset>
+
+

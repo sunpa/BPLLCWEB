@@ -1,0 +1,180 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+    <meta http-equiv="X-UA-Compatible" content="IE =Edge" />
+    <meta charset="utf-8" />
+
+    <title>@ViewBag.Title</title>
+    <link rel="shortcut icon" media="all" type="image/x-icon" href="@Url.Content("~/images/favicon.ico")" />
+    <link href="@Url.Content("~/Content/Site.css")" rel="stylesheet" type="text/css" />
+
+    <script src="@Url.Content("~/Scripts/jquery-1.10.2.min.js")" type="text/javascript"></script>
+    <script src="@Url.Content("~/Scripts/modernizr-2.6.2.js")" type="text/javascript"></script>
+    <script src="@Url.Content("~/Scripts/jquery-1.10.2.js")" type="text/javascript"></script>
+
+</head>
+<body>
+    <div class="page">
+
+        <header>
+            <div id="banner">
+                <table width="960">
+                    <tr>
+                        <td>
+                            <a href="/"><img src="/images/HomepageTopBanner.gif" width="319" height="50" title="Home" id="homepagetopbanner" border="0" /></a>
+                        </td>
+                        <td>
+                            <nav>
+                                <ul>
+                                    <li id="login">
+                                        <a id="login-trigger" href="#">
+                                            Log in <span>▼</span>
+                                        </a>
+                                        <div id="login-content">
+                                            <form id="loginForm" method="post" action="https://www.businesspartnersllc.com/security/verify_user.aspx">
+                                                <fieldset id="inputs">
+                                                    <input id="username" type="text" name="Username" placeholder="Your Username" required>
+                                                    <input id="password" type="password" name="Password" placeholder="Your Password" required>
+                                                </fieldset>
+                                                <fieldset id="actions">
+                                                    <input type="submit" id="submit" value="Log in">
+                                                    <label>Forgot your password? Click <a href="/Home/ForgottenPassword">Here</a></label>
+                                                </fieldset>
+                                            </form>
+                                        </div>
+                                    </li>
+                                </ul>
+                            </nav>
+                        </td>
+                    </tr>
+                </table>
+            </div>
+
+            <div id="menu">
+                <nav>
+                    <ul id="ddmenu">
+                        <li>
+                            <a href="/">&nbsp;Home&nbsp;</a>
+                            |
+                        </li>
+                        <li>
+                            <a href="#">&nbsp;&nbsp;About Us&nbsp;&nbsp;</a>
+                            <ul>
+                                <li><a href="/Home/WhoWeAre">Who We Are</a></li>
+                                <li><a href="/Home/PartnerWithUs">Partner With Us</a></li>
+                                <li><a href="/Home/Careers">Careers</a></li>
+                            </ul>|
+                        </li>
+                        <li>
+                            <a href="#">&nbsp;&nbsp;&nbsp;Services&nbsp;&nbsp;&nbsp;</a>
+                            <ul>
+                                <li><a href="/Home/ServicesOrigination">Loan Origination</a></li>
+                                <li><a href="/Home/ServicesProcessing">Processing & Underwriting</a></li>
+                                <li><a href="/Home/ServicesAsset">Loan Servicing</a></li>
+                                <li><a href="/Home/ServicesLoanReferral">Loan Referral Program</a></li>
+                                <li><a href="/Home/PortfolioManagement">Portfolio Management</a></li>
+                            </ul>|
+                        </li>
+                        <li>
+                            <a href="#">&nbsp;&nbsp;&nbsp;Loan Programs&nbsp;&nbsp;&nbsp;</a>
+                            <ul>
+                                <li><a href="/Home/LoansGeneral">General Information</a></li>
+                                <li><a href="/Home/LoansSBA" title="Small Business Administration">SBA</a></li>
+                                <li><a href="/Home/LoansCRE" title="Commercial Real Estate">CRE</a></li>
+                                <li><a href="/Home/LoansSBS" title="Small Business Services">SBS</a></li>
+                            </ul>|
+                        </li>
+                        <li>
+                            <a href="#">&nbsp;Participation Programs&nbsp;</a>
+                            <ul>
+                                <li><a href="/Home/ParticipationGeneral">General Information</a></li>
+                                <li><a href="/Home/ParticipationSignUp">Sign-Up</a></li>
+                            </ul>|
+                        </li>
+                        <li>
+                            <a href="/Home/Faq">&nbsp;&nbsp;&nbsp;FAQ&nbsp;&nbsp;&nbsp;</a>
+                            |
+                        </li>
+                        <li>
+                            <a href="/Home/IndustryNews">&nbsp;Industry News&nbsp;</a>
+                            |
+                        </li>
+                        <li>
+                            <a href="/ContactUs/Contacts">&nbsp;&nbsp;Contact Us&nbsp;&nbsp;</a>
+                        </li>
+                    </ul>
+                </nav>
+            </div>
+           
+        </header>
+
+        <section id="main">
+            @RenderBody()
+        </section>
+        <table border="0">
+            <tr><td height="10"></td></tr>
+        </table>
+                
+        <div id="beforefooter">
+            <table>
+                <tr>
+                    <td style="vertical-align: top; width: 160px">                        
+                        <img src="/images/aicpa-soc-logo.jpg" border="0" height="152" width="158" />                                               
+                    </td>
+                    <td style ="vertical-align: middle; width: 150px;">
+                        &nbsp;&nbsp;<font size="1" face="Arial, Helvetica, sans-serif">SSAE 16 SOC Reviewed</font>
+                    </td>
+                    <td style="vertical-align: top">
+                        <script type="text/javascript" src="https://seal.thawte.com/getthawteseal?host_name=www.businesspartnersllc.com&amp;size=S&amp;lang=en"></script>
+                    </td>
+                </tr>
+                <tr><td height="48" colspan="2"></td></tr>
+            </table>
+        </div>
+
+        <div id="footer_container">
+            <footer id="footer">
+                &copy;2014. CU Business Partners, LLC operating as Business Partners.
+                <span class="top_link" onclick="">
+                    ▲&nbsp;&nbsp;Top
+                </span>
+            </footer>
+        </div>
+
+    </div>  
+</body>
+</html>
+
+<script type="text/javascript">
+    $(document).ready(function () {
+
+        $('#login-trigger').click(function () {
+            $(this).next('#login-content').slideToggle();
+            $(this).toggleClass('active');
+
+            if ($(this).hasClass('active')) $(this).find('span').html('&#x25B2;')
+            else $(this).find('span').html('&#x25BC;')
+        })
+
+        $('a').on('click', function (e) {
+            // prevent a link from opening the URL
+            //e.preventDefault();
+        });
+
+        $('#ddmenu li').hover(function () {
+            clearTimeout($.data(this, 'timer'));
+            $('ul', this).stop(true, true).slideDown(200);
+        }, function () {
+            $.data(this, 'timer', setTimeout($.proxy(function () {
+                $('ul', this).stop(true, true).slideUp(200);
+            }, this), 100));
+        });
+
+        $(".top_link").click(function () {
+            scroll(0, 0);
+        });
+
+    });
+
+
+</script>

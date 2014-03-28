@@ -1,0 +1,66 @@
+﻿
+@{
+    ViewBag.Title = "Services Origination";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<fieldset id="navpagefieldset">
+
+    <div class="navHeader">
+        Loan Origination
+    </div>
+
+    <div id="navBody">
+
+        <table>
+
+            @*not template begin*@
+
+            <tr>
+                <td style="width: 620px">
+                    Business Partners offers a wide range of loan programs and lending services to expand<br />
+                    your SBA and/or real estate loan capabilities with minimal expense or investment.<br />
+                    We’re able to source and manage loans in all 50 states and we provide our clients with <br />
+                    the tools needed to grow loans and manage risk.<br /><br />
+
+                    <strong>We finance a wide range of property types including:</strong>
+                    <ul>
+                        <li id="navBodyLi">Industrial</li>
+                        <li id="navBodyLi">Office</li>
+                        <li id="navBodyLi">Mixed use</li>
+                        <li id="navBodyLi">Anchored retail</li>
+                        <li id="navBodyLi">Factory outlets</li>
+                        <li id="navBodyLi">Mini-storage</li>
+                        <li id="navBodyLi">Religious buildings</li>
+                        <li id="navBodyLi">Assisted living centers</li>
+                        <li id="navBodyLi">Health clubs</li>
+                        <li id="navBodyLi">Multi-family</li>
+                    </ul>
+                    <br />
+                    We provide real estate financing with competitive rates in primary and secondary<br />
+                    markets with loan amounts from $500,000 to a maximum of $15,000,000.
+                    <br /><br />
+                    <strong>In the small business lending arena, we finance:</strong>
+                    <ul>
+                        <li id="navBodyLi">Term loans</li>
+                        <li id="navBodyLi">Lines of credit</li>
+                        <li id="navBodyLi">SBA guaranteed Express, 7a, and 504 loans</li>
+                    </ul>
+                    <br />
+                    @Html.ActionLink("Click here", "ContactUs", "ContactUs", new { contactcode = "osbal" }, null)
+                    to be contacted by one of our lending experts to discuss your organization’s<br />
+                    loan origination needs.
+                </td>
+                <td style="vertical-align: top;">
+                    <img src="/images/Services/Loan origination.jpg" width="280" title="Loan Origination" />
+                </td>
+            </tr>
+
+
+            @*not template end*@
+
+        </table>
+
+    </div>
+
+</fieldset>

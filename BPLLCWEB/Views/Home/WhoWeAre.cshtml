@@ -1,0 +1,73 @@
+﻿
+@{
+    ViewBag.Title = "Who We Are";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<fieldset id="navpagefieldset">
+    
+    <div class="navHeader">
+        Who We Are
+    </div>
+
+    <div id="navBody">
+
+        <table>
+
+                @*not template begin*@
+
+                <tr>
+                    <td style="width: 620px">
+                        Business Partners is a nationwide provider of superior small business and commercial<br />
+                        real estate lending services, designed to broaden and diversify our clients’ asset base<br />
+                        and enhance revenues. With years of experience, and a focus on extraordinary service<br />
+                        and support, we’re experts at building customer profitability and satisfaction.
+                        <br /><br />
+                        Business Partners was created in 1995 as a <a href="/Home/PartnerWithUs">strategic partner</a> for financial institutions<br />
+                        needing expertise in commercial real estate and small business lending. Today,<br />
+                        we support a nationwide base of lenders and brokers by providing the tools and<br />
+                        infrastructure essential for loan portfolio growth.<br /><br />
+
+                        Our services include:
+                        <ul>
+                            <li id="navBodyLi"><a href="/Home/ServicesOrigination">Loan origination</a></li>
+                            <li id="navBodyLi"><a href="/Home/ServicesProcessing">Processing and Underwriting</a></li>
+                            <li id="navBodyLi"><a href="/Home/PortfolioManagement">Portfolio management</a></li>
+                            <li id="navBodyLi"><a href="/Home/ServicesAsset">Loan servicing, reporting and collection</a></li>
+                            <li id="navBodyLi"><a href="/Home/ParticipationGeneral">Participation aggregation and management</a></li>
+                        </ul>
+                    </td>
+                    <td style="vertical-align: top;">
+                        <img src="/images/AboutUs/Who we are.jpg" width="280" title="Who We Are" />
+                    </td>
+                </tr>
+
+                <tr>
+                    <td>
+                        <br />
+                        No matter what services you need, we can help your organization to:
+                        <ul>
+                            <li id="navBodyLi">Enhance income</li>
+                            <li id="navBodyLi">Expand your asset base</li>
+                            <li id="navBodyLi">Diversify your loan portfolio</li>
+                            <li id="navBodyLi">Enjoy better lending support and service</li>
+                            <li id="navBodyLi">
+                                Gain the competitive advantage brought by Business Partners’ expertise and
+                                marketplace knowledge
+                            </li>
+                        </ul>
+                        <br />
+                        @Html.ActionLink("Click here", "ContactUs", "ContactUs", new { contactcode = "crel" }, null)
+                        to be contacted by one of our lending experts to discuss your<br />
+                        organization’s specific needs.
+
+                    </td>
+                </tr>
+
+                @*not template end*@
+
+            </table>
+         
+     </div>
+
+</fieldset>

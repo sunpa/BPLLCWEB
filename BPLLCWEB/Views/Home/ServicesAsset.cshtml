@@ -1,0 +1,54 @@
+﻿
+@{
+    ViewBag.Title = "Services Asset";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<fieldset id="navpagefieldset">
+
+    <div class="navHeader">
+        Loan Servicing, Reporting and Collection
+    </div>
+
+    <div id="navBody">
+
+        <table>
+
+            @*not template begin*@
+
+            <tr>
+                <td style="width: 620px">
+                    Building a profitable lending program means taking on additional risk. Business Partners<br />
+                    will support your organization with comprehensive asset and risk management tools. <br />
+                    Our transparent approach to underwriting and risk management is based on providing<br />
+                    extensive support documentation and timely, in-depth loan reviews and inspection<br />
+                    reports —including on-going monitoring of asset quality and the ability of borrowers<br />
+                    to pay— that your examiners, auditors, management and board members will appreciate.
+
+                    <br /><br />
+
+                    Business Partners also offers comprehensive collection services to help keep loan<br />
+                    repayment current. From payment reminders, late notices and direct communication,<br />
+                    we can facilitate timely repayment from your borrowers.
+
+                    <br /><br />
+
+                    
+                    @Html.ActionLink("Click here", "ContactUs", "ContactUs", new { contactcode = "osbal" }, null)
+                    to be contacted by one of our lending experts to discuss your organization’s<br />
+                    loan servicing needs.
+
+                </td>
+                <td style="vertical-align: top;">
+                    <img src="/images/Services/Loan servicing.jpg" width="280" title="Loan Servicing, Reporting and Collection" />
+                </td>
+            </tr>
+
+
+            @*not template end*@
+
+        </table>
+
+    </div>
+
+</fieldset>

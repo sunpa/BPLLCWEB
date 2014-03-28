@@ -1,0 +1,59 @@
+﻿
+@{
+    ViewBag.Title = "Participation General";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<fieldset id="navpagefieldset">
+
+    <div class="navHeader">
+        Participation Aggregation and Management
+    </div>
+
+    <div id="navBody">
+
+        <table>
+
+            @*not template begin*@
+
+            <tr>
+                <td style="width: 620px">
+                    Another way to build your loan portfolio is through Business Partners’ Participation<br />
+                    Loan program. Even the smallest lender will find this a good solution for profitable<br />
+                    business lending. By participating in the funding of loans you put your organization<br />
+                    on the path to growth. This unique program, which adheres to industry regulations,<br />
+                    auditing guidelines and standards, allows you to grow beyond your traditional territory,<br />
+                    expand your client base, diversify your lending and increase the volume of loans without<br />
+                    excessive risk or cost.
+
+                    <br /><br />
+
+                    With our loan participation program you can control when, how and where you want to<br />
+                    build portfolio value. It allows you to add loans in small increments, rebalance your<br />
+                    loan-to-depositratio (if applicable) and manage your maximum aggregation. Best of all<br />
+                    you can select the loans in which you want to invest and submit your participation requests<br />
+                    online.You can also view, change and assess your portfolio online in real time. There’s no<br />
+                    simpler way to make your loan program goals achievable.
+
+                    <br /><br />
+
+                    @Html.ActionLink("Click here", "ContactUs", "ContactUs", new { contactcode = "osbal" }, null)
+                    to be contacted by one of our lending experts to discuss your organization’s<br />
+                    participation needs.
+
+                </td>
+                <td style="vertical-align: top;">
+                    <img src="/images/Participation/participation.jpg" width="280" title="Participation" />
+                </td>
+            </tr>
+
+
+            @*not template end*@
+
+        </table>
+
+    </div>
+
+</fieldset>
+
+

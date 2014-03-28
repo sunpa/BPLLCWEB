@@ -1,0 +1,173 @@
+﻿@model BPLLCWEB.Domain.Entities.BrokerInfo
+
+@{
+    ViewBag.Title = "Broker Resources";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+    string successful = ViewBag.Successful;
+    string wrongnumber = ViewBag.WrongNumber;
+}
+
+@using BPLLCWEB.Helpers
+
+<script src="@Url.Content("~/Scripts/jquery.validate.min.js")" type="text/javascript"></script>
+<script src="@Url.Content("~/Scripts/jquery.validate.unobtrusive.min.js")" type="text/javascript"></script>
+
+<fieldset id="navpagefieldset">
+
+    <div class="navHeader">
+        Broker Resources
+    </div>
+
+    <div id="navBody">
+
+        <table>
+
+            @*not template begin*@
+
+            <tr>
+                <td style="width: 620px">
+                    Business Partners
+                    offers competitively priced commercial real estate loans. Our program
+                    offers a range of pricing options to better serve your clients.
+                    We offer the flexibility in terms you expect in a small community
+                    bank with the lending power of a large national financial institution.
+                    Our network of participants allows us to fund loans from $500,000
+                    to $50,000,000 in a process that is seamless to your client.
+
+                    <br /><br />
+
+                    Business Partners
+                    funded over $500,000,000 in 2005. Make the choice that has proven
+                    successful for so many. Choose Business Partners on your next transaction.
+
+                    <br /><br />
+
+                    <strong>Become An Approved Broker!</strong><br>
+                    For more information regarding our program, or to become an approved broker, please complete and submit the form below and a BPLLC Loan Officer will contact you.
+
+                    <br /><br />
+
+
+                    @using (Html.BeginForm())
+                    {
+                        @Html.ValidationSummary()
+
+                        <fieldset id="contactfieldset">
+                            <legend>&nbsp;&nbsp;<strong>Broker Request for Information</strong>&nbsp;&nbsp;</legend>
+                               
+                            <table>
+                                <tr>
+                                    <td>
+                                        <table>
+                                            <tr><td colspan="2" height="10"></td></tr>
+                                            <tr>
+                                                <td colspan="2"><font color="red">@successful</font></td>
+                                            </tr>
+                                            <tr style="vertical-align: top">
+                                                <td width="180px">
+                                                    <div class="editor-label">
+                                                        <strong><font color="red">*</font>&nbsp;Brokerage Firm:</strong>
+                                                    </div>
+                                                </td>
+                                                <td>
+                                                    @Html.TextBoxFor(c => c.BrokerageName, new { style = "width: 280px", id = "firsttextbox" })
+                                                </td>
+                                            </tr>
+
+                                            <tr>
+                                                <td>
+                                                    <div class="editor-label">
+                                                        <strong><font color="red">*</font>&nbsp;Broker Contact:</strong>
+                                                    </div>
+                                                </td>
+                                                <td>
+                                                    @Html.TextBoxFor(c => c.BrokertName, new { style = "width: 280px" })
+                                                </td>
+                                            </tr>
+
+                                            <tr>
+                                                <td>
+                                                    <div class="editor-label">
+                                                        <strong><font color="red">*</font>&nbsp;Phone Number:</strong>
+                                                    </div>
+                                                </td>
+                                                <td>
+                                                    @Html.TextBoxFor(c => c.PhoneNumber, new { style = "width: 280px" })
+                                                </td>
+                                            </tr>
+
+                                            <tr>
+                                                <td>
+                                                    <div class="editor-label">
+                                                        <strong><font color="red">*</font>&nbsp;Email Address:</strong>
+                                                    </div>
+                                                </td>
+                                                <td>
+                                                    @Html.TextBoxFor(c => c.EmailAddress, new { style = "width: 280px" })
+                                                </td>
+                                            </tr>
+
+                                            <tr>
+                                                <td colspan="2">
+                                                    <div class="editor-label">
+                                                        <strong>Please enter the number: </strong>@Html.CaptchaCalculationAnswer(15, "ArithmeticValue")
+                                                        @Html.TextBox("ArithmeticValue")
+                                                    </div>
+                                                </td>
+                                            </tr>
+
+                                            <tr>
+                                                <td colspan="2">
+                                                    <font color="red">@wrongnumber</font>
+                                                </td>
+                                            </tr>
+                                        </table>
+                                    </td>
+                                </tr>
+
+                                <tr>
+                                    <td>
+                                        <div class="editor-label">
+                                            <input type="submit" value="Submit" class="boxsubmit">
+                                        </div>
+
+                                    </td>
+                                </tr>
+
+                            </table>
+
+                        </fieldset>
+                    }
+
+
+
+                    <br />
+                    
+                    To apply now, simply download, complete and mail-in the CRE Broker Package below.
+                    
+                    <br /><br />
+
+                    <a href="/Downloads/BrokerApplication.pdf">Click here to download CRE Broker Package</a>&nbsp;<font size="2">(Acrobat PDF: 156KB)</font>
+
+</td>
+ 
+            </tr>
+
+
+            @*not template end*@
+
+        </table>
+
+    </div>
+
+</fieldset>
+
+
+<script type="text/javascript">
+    $(document).ready(function () {
+
+        $(function () {
+            $('#firsttextbox').focus();
+        });
+    });
+</script>

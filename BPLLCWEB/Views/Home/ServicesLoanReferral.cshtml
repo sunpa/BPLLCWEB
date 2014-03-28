@@ -1,0 +1,71 @@
+﻿
+@{
+    ViewBag.Title = "Services Loan Referral";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<fieldset id="navpagefieldset">
+
+    <div class="navHeader">
+        Small Business Loan Referral Program
+    </div>
+
+    <div id="navBody">
+
+        <table>
+
+            @*not template begin*@
+
+            <tr>
+                <td colspan="2">
+                    <strong>Join our Small Business Loan Referral Program! We'll pay up to $1,000 per loan referred and funded.</strong><br /><br />
+                </td>
+            </tr>
+
+            <tr>
+                <td>
+                    <strong>How the Program Works</strong>
+                    <ul>
+                        <li id="navBodyLi">Your organization generates business loan and Business Partners provides the expertise</li>
+                        <li id="navBodyLi">Minimum loan size is $50,000 and	extends to the maximum amounts allowable per SBA loan program</li>
+                        <li id="navBodyLi">Your bank or credit union earns a referral fee for each referred loan that Business Partners, LLC funds</li>
+                        <li id="navBodyLi">We offer all SBA programs - 7a, Express, and 504 products</li>                        
+                    </ul>
+                    <br />
+                    <strong>What We Do</strong>
+                    <ul>
+                        <li id="navBodyLi">Business Partners, LLC provides underwriting, processing, closing, funding and servicing of each loan</li>
+                        <li id="navBodyLi">Loans will be placed with one of our current Member Business Lending partners at the sole discretion of Business Partners, LLC</li>
+                        <li id="navBodyLi">Referral program applies to any credit union, bank or non-bank lending institution</li>
+                    </ul>
+                    <br />
+                    <strong>Advantages and Benefits</strong>
+                    <ul>
+                        <li id="navBodyLi">Your organization retains the relationship while Business Partners provides the transaction expertise</li>
+                        <li id="navBodyLi">Allows you to expand your business loan product selections and meet your particular client&#8217;s needs</li>
+                        <li id="navBodyLi">Provides your organization the ability to offer business lending without the exuberant cost</li>
+                        <li id="navBodyLi">Expert service from an organization with proven expertise in SBA lending</li>
+                    </ul>
+                    <br />
+                    <strong>Compensation</strong>
+                    <ul>
+                        <li id="navBodyLi">Within two weeks of funding,	your organization will receive a referral fee check from Business Partners</li>
+                        <li id="navBodyLi">Loans will be placed with one of our current Member Business Lending partners at the sole discretion of Business Partners, LLC</li>
+                        <li id="navBodyLi">Referral program applies to any credit union, bank or non-bank lending institution</li>
+                    </ul>
+                    <br />
+
+                    @Html.ActionLink("Download your application", "DownloadApplicationFile", null, new { @class = "boxdownload" } )
+
+                </td>
+
+            </tr>
+
+
+            @*not template end*@
+
+        </table>
+
+    </div>
+
+</fieldset>

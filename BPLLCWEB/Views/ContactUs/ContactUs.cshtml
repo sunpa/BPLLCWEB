@@ -1,0 +1,147 @@
+﻿@model BPLLCWEB.Domain.Entities.ContactInfo
+
+@{
+    ViewBag.Title = "Contact Us";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+    string code = ViewBag.ContactCode;
+    string subject = ViewBag.Subject;
+    string successful = ViewBag.Successful;
+    string wrongnumber = ViewBag.WrongNumber;
+}
+
+@using BPLLCWEB.Helpers
+
+<script src="@Url.Content("~/Scripts/jquery.validate.min.js")" type="text/javascript"></script>
+<script src="@Url.Content("~/Scripts/jquery.validate.unobtrusive.min.js")" type="text/javascript"></script>
+
+<fieldset id="navpagefieldset">
+
+    <div class="navHeader">
+        Contact Us
+    </div>
+
+    <div id="navBody">
+
+
+        @*not template begin*@
+
+        @using (Html.BeginForm())
+        {
+            @Html.ValidationSummary()
+
+            <fieldset id="contactfieldset">
+                <legend>&nbsp;&nbsp;<strong>@subject</strong>&nbsp;&nbsp;</legend>
+
+                <table>
+                    <tr>
+                        <td>
+                            <table>
+                                <tr><td colspan="2" height="10"></td></tr>
+                                <tr>
+                                    <td colspan="2"><font color="red">@successful</font></td>
+                                </tr>
+                                <tr style="vertical-align: top">
+                                    <td width="200px">
+                                        <div class="editor-label">
+                                            <strong>Credit Union Name:</strong>
+                                        </div>
+                                    </td>
+                                    <td>
+                                        @Html.TextBoxFor(c => c.CreditunionName, new { style = "width: 280px", id = "firsttextbox" })
+                                    </td>
+                                </tr>
+
+                                <tr>
+                                    <td>
+                                        <div class="editor-label">
+                                            <strong><font color="red">*</font>&nbsp;Contact Name:</strong>
+                                        </div>
+                                    </td>
+                                    <td>
+                                        @Html.TextBoxFor(c => c.ContactName, new { style = "width: 280px" })
+                                    </td>
+                                </tr>
+
+                                <tr>
+                                    <td>
+                                        <div class="editor-label">
+                                            <strong><font color="red">*</font>&nbsp;Phone Number:</strong>
+                                        </div>
+                                    </td>
+                                    <td>
+                                        @Html.TextBoxFor(c => c.PhoneNumber, new { style = "width: 280px" })
+                                    </td>
+                                </tr>
+
+                                <tr>
+                                    <td>
+                                        <div class="editor-label">
+                                            <strong><font color="red">*</font>&nbsp;Email Address:</strong>
+                                        </div>
+                                    </td>
+                                    <td>
+                                        @Html.TextBoxFor(c => c.EmailAddress, new { style = "width: 280px" })
+                                    </td>
+                                </tr>
+
+                                <tr>
+                                    <td colspan="2">
+                                        <div class="editor-label">
+                                            <strong><font color="red">*</font>&nbsp;Problem / Issue:</strong><br />
+                                            @Html.TextAreaFor(c => c.ProblemIssue, new { cols = 480, rows = 10 })
+                                        </div>
+                                    </td>
+                                </tr>
+                                
+                                <tr>
+                                    <td colspan="2">
+                                        <div class="editor-label">
+                                             <strong>Please enter the number: </strong>@Html.CaptchaCalculationAnswer(15, "ArithmeticValue")
+                                             @Html.TextBox("ArithmeticValue")
+                                        </div>
+                                    </td>                                    
+                                </tr>
+
+                                <tr>
+                                    <td colspan="2">
+                                        <font color="red">@wrongnumber</font>
+                                    </td>
+                                </tr>
+                            </table>
+                        </td>
+                    </tr>
+
+                    <tr>
+                        <td>
+                            <div class="editor-label">
+                                <input type="submit" value="Submit" class="boxsubmit">
+                            </div>
+
+                        </td>
+                    </tr>
+
+                </table>
+
+                <input type="hidden" name="subject" value="@subject" />
+
+            </fieldset>
+        }
+
+
+        @*not template end*@
+
+
+
+    </div>
+
+</fieldset>
+
+
+<script type="text/javascript">
+    $(document).ready(function () {
+
+        $(function () {
+            $('#firsttextbox').focus();
+        });
+    });
+</script>

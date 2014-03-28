@@ -1,0 +1,55 @@
+﻿
+@{
+    ViewBag.Title = "Services Processing";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<fieldset id="navpagefieldset">
+
+    <div class="navHeader">
+        Processing & Underwriting
+    </div>
+
+    <div id="navBody">
+
+        <table>
+
+            @*not template begin*@
+
+            <tr>
+                <td style="width: 620px">
+                    Business Partners has the needed expertise and experience to process and underwrite<br />
+                    small business and commercial real estate loans. If you’re an organization looking to<br />
+                    originate these type of loans but you lack the expertise, staff, time and resources to<br />
+                    make it happen, then Business Partners is your solution. Our lending experts have years<br />
+                    of industry experience and know exactly what it takes to process and underwrite your<br />
+                    loans in a timely and accurate manner.
+
+                    <br /><br />
+
+                    We’ll handle everything - provide the loan application, process all the borrower<br />
+                    information, underwrite the credit, prepare the loan documents and manage the loan<br />
+                    closing. By utilizing our turnkey process, Business Partners covers all the bases of the<br />
+                    loan process so you don't have to.
+                    
+                    <br /><br />
+                                        
+                    @Html.ActionLink("Click here", "ContactUs", "ContactUs", new { contactcode = "osbal" }, null)
+                    to be contacted by one of our lending experts to discuss your organization’s<br />
+                    processing and underwriting needs.
+
+                </td>
+                <td style="vertical-align: top;">
+                    <img src="/images/Services/Processing and underwriting.jpg" width="280" title="Processing & Underwriting" />
+                </td>
+            </tr>
+
+
+            @*not template end*@
+
+        </table>
+
+    </div>
+
+</fieldset>
+

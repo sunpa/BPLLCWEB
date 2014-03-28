@@ -1,0 +1,66 @@
+﻿@{
+    ViewBag.Title = "Business Partners LLC";
+}
+
+ 
+<div id="bodycontainer">
+
+    @*<div id="centerbanner">
+        <img src="/images/HomepageCenterBanner.jpg" width="960" alt="Business Partners LLC" id="homepagecenterbanner" border="0" />
+    </div>*@
+
+    <div>
+        <table width="960">
+            <tr>
+                <td colspan="2">
+                    <div>
+                        <a href="/Downloads/NewCEOEasley.pdf"><img src="/images/EasleyBanner.jpg" style="width: 960px" title="Pam Easley CEO" /></a>
+                    </div>
+                </td>
+            </tr>
+            <tr>
+                <td width="230px" style="vertical-align: top">
+                    <fieldset id="homepagefieldset">
+
+                        <div class="homepage-links">
+                            @Html.ActionLink("Recent Fundings", "RecentFundings", null, new { @class = "box" })
+                        </div>
+
+
+                        <div class="homepage-links">
+                            @Html.ActionLink("REO & Notes for Sale", "REONotesSale", null, new { @class = "box" })
+                        </div>
+
+
+                        <div class="homepage-links">
+                            @Html.ActionLink("Broker Resources", "Broker", null, new { @class = "box" })
+                        </div>
+
+
+                        <div class="homepage-links">
+                            @Html.ActionLink("Rate Sheet", "DownloadRateSheetFile", null, new { @class = "box" })
+                        </div>
+                    </fieldset>
+                </td>
+
+                <td width="730px" style="vertical-align: top">
+                    <div id="indexBanner">
+                        <div id="indexMessage">For credit unions,<br />by credit unions&hellip; partnering for<br />the future<a href="">Learn More</a>
+                        </div>
+                    </div>
+
+                </td>
+            </tr>
+            <tr>
+                <td colspan="2">
+                    <div class="indexBox" id="indexBox1"><div class="indexBoxHeading">Credit Unions</div><div class="indexBoxCopy">Diversify your loan portfolio and your balance sheet with a partner who understands the unique needs of credit unions.<div class="indexBoxCopyLink"><a href="">Learn more &raquo;</a></div></div></div>
+                    <div class="indexBox" id="indexBox2"><div class="indexBoxHeading">Brokers</div><div class="indexBoxCopy">Business Partners is brokers&rsquo; centralized source of capital for commercial real estate customers.<br /><br /><div class="indexBoxCopyLink"><a href="">Learn more &raquo;</a></div></div></div>
+                    <div class="indexBox" id="indexBox3"><div class="indexBoxHeading">The New Business Partners</div><div class="indexBoxCopy">With a new team and commitment to credit unions nationwide, Business Partners is the best solution to help credit unions grow.<div class="indexBoxCopyLink"><a href="">Learn more &raquo;</a></div></div></div>
+
+                </td>
+            </tr>
+        </table>
+    </div>
+</div>
+
+ 
