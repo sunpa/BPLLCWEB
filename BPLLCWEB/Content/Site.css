@@ -715,3 +715,49 @@ h3 {
     color: #FFD700;
     cursor: pointer; 
 }
+
+
+/*showing a bigger image*/ 
+#picture {
+    width:158px; 
+    height: 145px; 
+    background-color:#ffffff;
+}
+
+#picture a.small, #picture a.small:visited { 
+    display:block; 
+    width:158px; 
+    height:145px; 
+    text-decoration:none; 
+    background:#ffffff; 
+    top:0; 
+    left:0; 
+    border:0;
+}
+
+#picture a img {border:0;}
+
+#picture a.small:hover {
+    text-decoration:none; 
+    background-color:#ffffff; 
+    color:#ffffff;
+}
+
+#picture a .large {
+    display:block; 
+    position:absolute; 
+    width:0; 
+    height:0; 
+    border:0; 
+    bottom:35px; 
+    left:0;
+}
+
+#picture a.small:hover .large {
+    display:block; 
+    position:relative; 
+    bottom: 200px; 
+    left:100px; 
+    width:158px; 
+    height:145px; 
+}
