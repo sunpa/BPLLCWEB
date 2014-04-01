@@ -56,7 +56,6 @@
     <Compile Include="Entities\ContactInfo.cs" />
     <Compile Include="Entities\Logins.cs" />
     <Compile Include="Entities\ParticipantInfo.cs" />
-    <Compile Include="Entities\SecretQA.cs" />
     <Compile Include="Entities\Users.cs" />
     <Compile Include="Entities\ValidateUser.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />

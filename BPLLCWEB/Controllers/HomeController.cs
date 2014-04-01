@@ -138,13 +138,20 @@ namespace BPLLCWEB.Controllers
 
         public ActionResult SecretQA()
         {
-            return View();
+            Logins login = new Logins();
+            login.UID = (int)TempData["UID"];
+            login.UserName = (string)TempData["UserName"];
+            login.SecretQuestion = (string)TempData["Question"];
+            login.Errors = (int)TempData["Errors"];
+
+            return View(login);
         }
 
         [HttpPost]
         public ActionResult ForgottenPassword(ValidateUser user)
         {
             bool valid = false;
+            int errorsCount = 0;
 
             try
             {
@@ -160,13 +167,16 @@ namespace BPLLCWEB.Controllers
                         using (EFDbContext context = new EFDbContext())
                         {
                             var uname = (from u in context.logins
-                                         where u.UserName == user.UserName
+                                         where u.UserName == user.UserName                                         
                                          select u).FirstOrDefault();
 
                             if (uname != null)
                             {
-                                Session["UID"] = uname.UID;
-                                Session["UserName"] = uname.UserName;
+                                TempData["UID"] = uname.UID;
+                                TempData["UserName"] = uname.UserName;
+                                TempData["Question"] = uname.SecretQuestion;
+                                TempData["Errors"] = uname.Errors;
+                                errorsCount = uname.Errors;
                                 valid = true;
                             }
                         }
@@ -183,16 +193,19 @@ namespace BPLLCWEB.Controllers
                             {
                                 Session["EmailAdd"] = eadd.EmailAdd;
 
-                                // get username
+                                // get login info
                                 var username = (from u in context.logins
                                                 where u.UID == eadd.uniqueID
                                                 select u).FirstOrDefault();
 
                                 if (username != null)
                                 {
-                                    Session["UserName"] = username.UserName;
+                                    TempData["UID"] = username.UID;
+                                    TempData["UserName"] = username.UserName;
+                                    TempData["Question"] = username.SecretQuestion;
+                                    TempData["Errors"] = username.Errors;
+                                    errorsCount = username.Errors;
                                 }
-
                                 valid = true;
                             }
                         }
@@ -204,7 +217,14 @@ namespace BPLLCWEB.Controllers
                     }
                     else
                     {
-                        return RedirectToAction("/SecretQA");
+                        if (errorsCount > 2)
+                        {
+                            ViewBag.Message = "Your account has been locked. You can unlock your account by contacting the web administrator via email at sung.park@businesspartnersllc.com or john.sowter@businesspartnersllc.com.";
+                        }
+                        else
+                        {
+                            return RedirectToAction("SecretQA");
+                        }
                     }
                 }
             }
@@ -218,30 +238,37 @@ namespace BPLLCWEB.Controllers
         }
 
         [HttpPost]
-        public ActionResult SecretQA(SecretQA qa)
+        public ActionResult SecretQA(Logins logins)
         {
             bool valid = false;
-            var UID = Session["UID"];
-            var username = Session["UserName"];
+            var uid = logins.UID;
+            var username = logins.UserName;
+
+            TempData["UID"] = logins.UID;
+            TempData["UserName"] = logins.UserName;
+            TempData["Question"] = logins.SecretQuestion;
+            TempData["Errors"] = logins.Errors;
 
             try
             {
-                if (String.IsNullOrEmpty(qa.SecretQuestion) || String.IsNullOrEmpty(qa.SecretAnswer))
+                if (String.IsNullOrEmpty(logins.SecretQuestion) || String.IsNullOrEmpty(logins.SecretAnswer))
                 {
-                    ViewBag.Message = "Secret Question and Secret Answer need to be entered.";
+                    //ViewBag.Message = "Secret Question and Secret Answer need to be entered.";
+                    TempData["Message"] = "Secret Question and Secret Answer need to be entered.";
+                    return RedirectToAction("SecretQA");
                 }
                 else
                 {
                     // validate question and answer
-                    if (!String.IsNullOrEmpty(qa.SecretQuestion) && !String.IsNullOrEmpty(qa.SecretAnswer))
+                    if (!String.IsNullOrEmpty(logins.SecretQuestion) && !String.IsNullOrEmpty(logins.SecretAnswer))
                     {
                         if (username != null)
                         {
                             using (EFDbContext context = new EFDbContext())
                             {
                                 var login = (from l in context.logins
-                                             where l.SecretQuestion == qa.SecretQuestion
-                                             && l.SecretAnswer == qa.SecretAnswer
+                                             where l.SecretQuestion == logins.SecretQuestion
+                                             && l.SecretAnswer == logins.SecretAnswer
                                              && l.UserName == (string)username
                                              select l).FirstOrDefault();
 
@@ -256,44 +283,32 @@ namespace BPLLCWEB.Controllers
                     // display error if user login info is not found
                     if (!valid)
                     {
-                        ViewBag.Message = "Incorrect entry. Please try again.";
+                        TempData["Message"] = "Incorrect entry. Please try again.";
+                        return RedirectToAction("SecretQA");
                     }
                     else
                     {
                         string emailAdd = null;
+                        using (EFDbContext context = new EFDbContext())
+                        {
+                            var ea = (from e in context.users
+                                      where e.uniqueID == (int)uid
+                                      select e).FirstOrDefault();
 
-                        if (Session["EmailAdd"] != null)
-                        {
-                            emailAdd = Session["EmailAdd"].ToString();
-                        }
-                        else if (UID != null)
-                        {
-                            using (EFDbContext context = new EFDbContext())
+                            if (ea != null)
                             {
-                                var ea = (from e in context.users
-                                          where e.uniqueID == (int)UID
-                                          select e).FirstOrDefault();
-
-                                if (ea != null)
-                                {
-                                    emailAdd = ea.EmailAdd;
-                                }
-                                else
-                                {
-                                    valid = false;
-                                }
+                                emailAdd = ea.EmailAdd;
                             }
-                        }
-                        else
-                        {
-                            // both UID and EmailAdd sessions are gone
-                            valid = false;
+                            else
+                            {
+                                valid = false;
+                            }
                         }
 
                         if (!valid)
                         {
                             ViewBag.Message = "Please try again.";
-                            return RedirectToAction("/ForgottenPassword");
+                            return RedirectToAction("ForgottenPassword");
                         }
                         else
                         {
@@ -307,12 +322,8 @@ namespace BPLLCWEB.Controllers
                             // send welcome email
                             processor.ProcessNewPasswordSendEmail(emailAdd, Convert.ToString(username), newPasword);
 
-                            ViewBag.Message = "Your will receive a new password soon.";
-                            Session["UserName"] = null;
-                            Session["UID"] = null;
-                            Session["EmailAdd"] = null;
-
-                            //return RedirectToAction("/ForgottenPassword");
+                            TempData["Message"] = "Your will receive a new password soon.";
+                            return RedirectToAction("SecretQA");
                         }
                     }
                 }
