@@ -151,7 +151,8 @@ namespace BPLLCWEB.Controllers
         public ActionResult ForgottenPassword(ValidateUser user)
         {
             bool valid = false;
-            int errorsCount = 0;
+            int errors = 0, uid = 0;
+            string username = null, question = null;
 
             try
             {
@@ -163,51 +164,25 @@ namespace BPLLCWEB.Controllers
                 {
                     // check if username OR email address is valid
                     if (!String.IsNullOrEmpty(user.UserName))
-                    {                     
-                        using (EFDbContext context = new EFDbContext())
+                    {
+                        if (Linqs.CheckUserName(ref uid, user.UserName, ref question, ref errors))
                         {
-                            var uname = (from u in context.logins
-                                         where u.UserName == user.UserName                                         
-                                         select u).FirstOrDefault();
-
-                            if (uname != null)
-                            {
-                                TempData["UID"] = uname.UID;
-                                TempData["UserName"] = uname.UserName;
-                                TempData["Question"] = uname.SecretQuestion;
-                                TempData["Errors"] = uname.Errors;
-                                errorsCount = uname.Errors;
-                                valid = true;
-                            }
+                            TempData["UID"] = uid;
+                            TempData["UserName"] = user.UserName;
+                            TempData["Question"] = question;
+                            TempData["Errors"] = errors;
+                            valid = true;
                         }
                     }
                     else
                     {
-                        using (EFDbContext context = new EFDbContext())
+                        if (Linqs.CheckEmailAddress(user.EmailAdd, ref uid, ref username, ref question, ref errors))
                         {
-                            var eadd = (from e in context.users
-                                        where e.EmailAdd == user.EmailAdd
-                                        select e).FirstOrDefault();
-
-                            if (eadd != null)
-                            {
-                                Session["EmailAdd"] = eadd.EmailAdd;
-
-                                // get login info
-                                var username = (from u in context.logins
-                                                where u.UID == eadd.uniqueID
-                                                select u).FirstOrDefault();
-
-                                if (username != null)
-                                {
-                                    TempData["UID"] = username.UID;
-                                    TempData["UserName"] = username.UserName;
-                                    TempData["Question"] = username.SecretQuestion;
-                                    TempData["Errors"] = username.Errors;
-                                    errorsCount = username.Errors;
-                                }
-                                valid = true;
-                            }
+                            TempData["UID"] = uid;
+                            TempData["UserName"] = username;
+                            TempData["Question"] = question;
+                            TempData["Errors"] = errors;
+                            valid = true;
                         }
                     }
 
@@ -217,7 +192,7 @@ namespace BPLLCWEB.Controllers
                     }
                     else
                     {
-                        if (errorsCount > 2)
+                        if (errors > 2)
                         {
                             ViewBag.Message = "Your account has been locked. You can unlock your account by contacting the web administrator via email at sung.park@businesspartnersllc.com or john.sowter@businesspartnersllc.com.";
                         }
@@ -243,6 +218,7 @@ namespace BPLLCWEB.Controllers
             bool valid = false;
             var uid = logins.UID;
             var username = logins.UserName;
+            int errors = logins.Errors;
 
             TempData["UID"] = logins.UID;
             TempData["UserName"] = logins.UserName;
@@ -253,78 +229,64 @@ namespace BPLLCWEB.Controllers
             {
                 if (String.IsNullOrEmpty(logins.SecretQuestion) || String.IsNullOrEmpty(logins.SecretAnswer))
                 {
-                    //ViewBag.Message = "Secret Question and Secret Answer need to be entered.";
                     TempData["Message"] = "Secret Question and Secret Answer need to be entered.";
                     return RedirectToAction("SecretQA");
                 }
                 else
                 {
-                    // validate question and answer
+                    // validate question and answer - username will always be present
                     if (!String.IsNullOrEmpty(logins.SecretQuestion) && !String.IsNullOrEmpty(logins.SecretAnswer))
                     {
                         if (username != null)
                         {
-                            using (EFDbContext context = new EFDbContext())
+                            if (Linqs.CheckAnswer(username, logins.SecretQuestion, logins.SecretAnswer))
                             {
-                                var login = (from l in context.logins
-                                             where l.SecretQuestion == logins.SecretQuestion
-                                             && l.SecretAnswer == logins.SecretAnswer
-                                             && l.UserName == (string)username
-                                             select l).FirstOrDefault();
+                                string emailAdd = null;
 
-                                if (login != null)
+                                if (Linqs.GetEmailAddress(ref emailAdd, uid))
                                 {
-                                    valid = true;
+                                    if (Linqs.UpdateLoginRecord(processor, emailAdd, Convert.ToString(username), uid))
+                                    {
+                                        valid = true;
+                                        TempData["Message"] = "Your will receive a new password soon.";
+                                        return RedirectToAction("SecretQA");
+                                    }
+                                }
+                            }
+                            else
+                            {
+                                errors += 1;
+                                
+                                if(errors == 3)
+                                {
+                                    TempData["Errors"] = errors;
+                                    Linqs.IncrementErrors(uid);
+
+                                    // display account locked out message
+                                    TempData["Message"] = "Your account has been locked. You can unlock your account by contacting the web administrator via email at sung.park@businesspartnersllc.com or john.sowter@businesspartnersllc.com.";
+                                    return RedirectToAction("SecretQA");
+                                }
+                                else if(errors < 3)
+                                {
+                                    TempData["Errors"] = errors;
+                                    Linqs.IncrementErrors(uid);
                                 }
                             }
                         }
                     }
 
-                    // display error if user login info is not found
+                    // display error 
                     if (!valid)
                     {
-                        TempData["Message"] = "Incorrect entry. Please try again.";
-                        return RedirectToAction("SecretQA");
-                    }
-                    else
-                    {
-                        string emailAdd = null;
-                        using (EFDbContext context = new EFDbContext())
+                        if(errors > 3)
                         {
-                            var ea = (from e in context.users
-                                      where e.uniqueID == (int)uid
-                                      select e).FirstOrDefault();
-
-                            if (ea != null)
-                            {
-                                emailAdd = ea.EmailAdd;
-                            }
-                            else
-                            {
-                                valid = false;
-                            }
-                        }
-
-                        if (!valid)
-                        {
-                            ViewBag.Message = "Please try again.";
-                            return RedirectToAction("ForgottenPassword");
+                            TempData["Message"] = "Your account has been locked. You can unlock your account by contacting the web administrator via email at sung.park@businesspartnersllc.com or john.sowter@businesspartnersllc.com.";
                         }
                         else
                         {
-                            // insert sercrets
-
-                            // generate new password
-                            string newPasword = Reusables.GetPassword();
-
-                            // update login record
-
-                            // send welcome email
-                            processor.ProcessNewPasswordSendEmail(emailAdd, Convert.ToString(username), newPasword);
-
-                            TempData["Message"] = "Your will receive a new password soon.";
-                            return RedirectToAction("SecretQA");
-                        }
+                            TempData["Message"] = "Incorrect entry. You have " + (3 - errors) + " tries left.";
+                        }                        
+                        return RedirectToAction("SecretQA");
                     }
                 }
             }
@@ -369,6 +331,7 @@ namespace BPLLCWEB.Controllers
             }
             return View();
         }
+
 
         [HttpPost]
         public ActionResult ParticipationSignUp(ParticipantInfo participantinfo)

@@ -21,6 +21,11 @@ namespace BPLLCWEB.Domain.Entities
         public string SecretAnswer { get; set; }
 
         public int Errors { get; set; }
+
+        public DateTime? Modified_On { get; set; }
+
+        public byte[] EncryptedPassword { get; set; }
+
     }
 
 }
