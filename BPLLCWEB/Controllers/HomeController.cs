@@ -317,7 +317,7 @@ namespace BPLLCWEB.Controllers
                     string mailtoAddress = ConfigurationManager.AppSettings["Email.To.Support"];
                     
                     //*** for testing ***
-                    mailtoAddress = "sung.park@businesspartnersllc.com";
+                    //mailtoAddress = "sung.park@businesspartnersllc.com";
 
                     if (!String.IsNullOrEmpty(mailtoAddress))
                     {
@@ -376,7 +376,7 @@ namespace BPLLCWEB.Controllers
 
 
                     //*** for testing ************************************
-                    mailtoAddress = "sung.park@businesspartnersllc.com";
+                    //mailtoAddress = "sung.park@businesspartnersllc.com";
 
                     if (!String.IsNullOrEmpty(mailtoAddress))
                     {

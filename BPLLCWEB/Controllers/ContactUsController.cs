@@ -61,7 +61,7 @@ namespace BPLLCWEB.Controllers
                     string mailtoAddress = Reusables.ContactRecipient(contactinfo.ContactCode);
 
                     //*** for testing ***
-                    mailtoAddress = "sung.park@businesspartnersllc.com";
+                    //mailtoAddress = "sung.park@businesspartnersllc.com";
 
                     contactinfo.MailToAddress = mailtoAddress;
                     string subject = ViewBag.Subject;
