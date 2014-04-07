@@ -38,8 +38,7 @@ namespace BPLLCWEB.Infrastructure
                 //WriteAsFile = bool.Parse(ConfigurationManager.AppSettings["Email.WriteAsfile"] ?? "false")
             };
 
-            ninjectKernel.Bind<IProcessor>()
-                .To<SubmitProcessor>()
+            ninjectKernel.Bind<IProcessor>().To<SubmitProcessor>()
                 .WithConstructorArgument("settings", emailSettings);
         }
     }

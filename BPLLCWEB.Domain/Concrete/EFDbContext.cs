@@ -25,5 +25,7 @@ namespace BPLLCWEB.Domain.Concrete
 
         public DbSet<Logins> logins { get; set; }
 
+        public DbSet<LoginAttempts> loginAttempts { get; set; }
+
     }
 }

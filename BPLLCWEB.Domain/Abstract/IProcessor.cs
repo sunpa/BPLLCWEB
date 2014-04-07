@@ -19,5 +19,7 @@ namespace BPLLCWEB.Domain.Abstract
 
         void ProcessSendErrorEmail(string errorMessage, string location);
 
+        void ProcessHackAttemptEmail(string ipaddress, string username, string password);
+
     }
 }

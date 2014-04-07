@@ -1,7 +1,9 @@
 ﻿using BPLLCWEB.Domain.Abstract;
 using BPLLCWEB.Domain.Concrete;
+using BPLLCWEB.Domain.Entities;
 using System;
 using System.Collections.Generic;
+using System.Data.Entity;
 using System.Linq;
 using System.Security.Cryptography;
 using System.Text;
@@ -11,6 +13,57 @@ namespace BPLLCWEB.Classes
 {
     public class Linqs
     {
+        private static int lockoutAttempts = 9;
+
+        public static bool DetemineLock(string ipaddress)
+        {
+            bool valid = false;
+
+            using (EFDbContext context = new EFDbContext())
+            {
+                DateTime currentDate = Convert.ToDateTime(DateTime.Now.ToShortDateString());
+
+                var loginattempts = (from la in context.loginAttempts
+                                     where la.ClientIP == ipaddress
+                                     && la.Unlocked == 0
+                                     && la.DateAdded >= currentDate
+                                     select la).AsEnumerable();
+
+                int count = loginattempts.Count();
+                if(count > lockoutAttempts)
+                {
+                    valid = true; // account locked
+                }
+            }
+            return valid;
+        }
+
+
+        public static bool ValidateLogin(string username, string plainpassword)
+        {
+            bool valid = false;
+            MD5CryptoServiceProvider md5Hasher = new MD5CryptoServiceProvider();
+            byte[] hashedDataBytes = null;
+            UTF8Encoding encoder = null;
+
+            using (EFDbContext context = new EFDbContext())
+            {
+                encoder = new UTF8Encoding();
+                hashedDataBytes = md5Hasher.ComputeHash(encoder.GetBytes(plainpassword));
+
+                var login = (from lo in context.logins
+                             where lo.UserName == username
+                             && lo.EncryptedPassword == hashedDataBytes
+                             select lo).FirstOrDefault();
+
+                if (login != null)
+                {
+                    valid = true;
+                }
+            }
+            return valid;
+        }
+
         public static bool CheckUserName(ref int uid, string username, ref string question, ref int errors)
         {
             bool valid = false;
@@ -122,6 +175,20 @@ namespace BPLLCWEB.Classes
             return valid;
         }
 
+        public static void InsertLoginAttempt(string ipaddress)
+        {
+            using (EFDbContext context = new EFDbContext())
+            {
+                LoginAttempts la = new LoginAttempts();
+                
+                la.ClientIP = ipaddress;
+                la.Unlocked = 0;
+                la.DateAdded = DateTime.Now;
+
+                context.loginAttempts.Add(la);
+                context.SaveChanges();
+            }
+        }
 
         public static bool UpdateLoginRecord(IProcessor processor, string email, string username, int uid)
         {

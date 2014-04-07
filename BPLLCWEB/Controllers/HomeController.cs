@@ -131,6 +131,115 @@ namespace BPLLCWEB.Controllers
             return View();
         }
 
+        public ActionResult ValidateLogin()
+        {
+            string username = Request["username"];
+            string password = Request["password"];
+            string ipaddress = Request.Params["REMOTE_ADDR"];
+
+            try
+            {
+                if (!String.IsNullOrEmpty(username))
+                {
+                    // determine lock first
+                    if (Linqs.DetemineLock(ipaddress))
+                    {
+                        // display account locked message
+                        processor.ProcessHackAttemptEmail(ipaddress, username, password);
+
+                        TempData["Message"] = "Your organization has been locked out from this site. Please try again later.";
+                        return RedirectToAction("Login");
+                    }
+                    else
+                    {
+                        // validate login
+                        if (Linqs.ValidateLogin(username, password))
+                        {
+                            return RedirectToAction("WhoWeAre");
+                        }
+                        else
+                        {
+                            // save a record into loginattempts
+                            Linqs.InsertLoginAttempt(ipaddress);
+
+                            TempData["Message"] = "Your account is not valid. Please try again.";
+                            return RedirectToAction("Login");
+                        }
+                    }
+                }
+                else
+                {
+                    TempData["Message"] = "Login account not found.";
+                    return RedirectToAction("Login");
+                }
+            }
+            catch (Exception ex)
+            {
+                processor.ProcessSendErrorEmail(ex.Message + "\n\n" + ex.ToString(), "BP ValidateLogin");
+                TempData["Message"] = "Some error has occurred. Please try again later.";
+                return RedirectToAction("Login");
+            }
+        }
+
+        public ActionResult Login()
+        {
+            return View();
+        }
+
+        [HttpPost]
+        public ActionResult Login(string username, string password)
+        {
+            //string username = Request["username"];
+            //string password = Request["password"];
+            string ipaddress = Request.Params["REMOTE_ADDR"];
+
+            // for testing
+            ipaddress = "10.0.0.69";
+
+            try
+            {
+                if (!String.IsNullOrEmpty(username))
+                {
+                    // determine lock first
+                    if (Linqs.DetemineLock(ipaddress))
+                    {
+                        // display account locked message
+                        processor.ProcessHackAttemptEmail(ipaddress, username, password);
+
+                        TempData["Message"] = "Your organization has been locked out from this site. Please try again later.";
+                        return View();
+                    }
+                    else
+                    {
+                        // validate login
+                        if (Linqs.ValidateLogin(username, password))
+                        {
+                            return RedirectToAction("WhoWeAre");
+                        }
+                        else
+                        {
+                            // save a record into loginattempts
+                            Linqs.InsertLoginAttempt(ipaddress);
+
+                            TempData["Message"] = "Your account is not valid. Please try again.";
+                            return View();
+                        }
+                    }
+                }
+                else
+                {
+                    TempData["Message"] = "Username and/or Password is missing.";
+                    return View();
+                }
+            }
+            catch (Exception ex)
+            {
+                processor.ProcessSendErrorEmail(ex.Message + "\n\n" + ex.ToString(), "BP HttpPost Login");
+                TempData["Message"] = "Some error has occurred. Please try again later.";
+                return View();
+            }
+        }
+
         public ActionResult ForgottenPassword()
         {
             return View();
@@ -298,7 +407,6 @@ namespace BPLLCWEB.Controllers
             return View();
         }
 
-
         [HttpPost]
         public ActionResult Broker(BrokerInfo brokerinfo)
         {
@@ -331,7 +439,6 @@ namespace BPLLCWEB.Controllers
             }
             return View();
         }
-
 
         [HttpPost]
         public ActionResult ParticipationSignUp(ParticipantInfo participantinfo)
@@ -391,7 +498,6 @@ namespace BPLLCWEB.Controllers
             }
             return View();
         }
-
 
         public ActionResult DownloadApplicationFile()
         {

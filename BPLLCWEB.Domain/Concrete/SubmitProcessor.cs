@@ -16,6 +16,7 @@ namespace BPLLCWEB.Domain.Concrete
         public string MailToAddress = "";
         public string MailFromAddress = ConfigurationManager.AppSettings["Email.From"];
         public string MailToTechAddress = ConfigurationManager.AppSettings["Email.Tech"];
+        public string MailToAlertGroup = ConfigurationManager.AppSettings["Email.Alert"];
         //public bool UseSsl = true;
         //public string Username = "MySmtpUsername";
         //public string Password = "MySmtpPassword";
@@ -161,6 +162,38 @@ namespace BPLLCWEB.Domain.Concrete
         public void ProcessNewPassword(ValidateUser user)
         {
 
+        }
+
+        public void ProcessHackAttemptEmail(string ipaddress, string username, string password)
+        {
+            StringBuilder sb = new StringBuilder();
+            sb.Append("<html><body><font face=Arial, Sans-Serif><p align=left>");
+            sb.Append("THIS SHOULD REQUIRE NO WORK ON YOUR PART" + "<br /><br />" + "<br /><br />");
+            sb.Append("BPLLC POSSIBLE HACK ATTEMPT - IP: " + ipaddress + "<br /><br />");
+            sb.Append("Attempted Username: " + username + "<br /><br />");
+            sb.Append("Attempted Password: " + password + "<br /><br />" + "<br /><br />");
+            sb.Append("The credit union users who are part of this organization will see the error message ");
+            sb.Append("and will be provided a link to unlock their own organization. This 'should' require no work ");
+            sb.Append("on your part. If you are called to unlock their account, please verify that this person ");
+            sb.Append("is a valid member, and then use the application to unlock them. Thanks!</p></font></body></html>");
+
+            string emailBody = sb.ToString();
+
+            using (var smtpClient = new SmtpClient())
+            {
+                smtpClient.Host = emailSettings.ServerName;
+                smtpClient.Port = emailSettings.ServerPort;
+
+                MailMessage mailMessage = new MailMessage(
+                    emailSettings.MailFromAddress,
+                    emailSettings.MailToAlertGroup,
+                    "BPLLC Web Site Has Reported a POSSIBLE HACK ATTEMPT!",
+                    emailBody);
+                mailMessage.IsBodyHtml = true;
+                mailMessage.Priority = MailPriority.Normal;
+
+                smtpClient.Send(mailMessage);
+            }
         }
 
         public void ProcessNewPasswordSendEmail(string recipient, string username, string newPasword)

@@ -266,9 +266,11 @@
     <Content Include="Views\Home\RecentFundings.cshtml" />
     <Content Include="Views\Home\ForgottenPassword.cshtml" />
     <Content Include="Views\Home\SecretQA.cshtml" />
+    <Content Include="Views\Home\Login.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
+    <Folder Include="images\icons\" />
     <Folder Include="images\LoanPrograms\" />
     <Folder Include="images\Participation\" />
     <Folder Include="images\REO\" />

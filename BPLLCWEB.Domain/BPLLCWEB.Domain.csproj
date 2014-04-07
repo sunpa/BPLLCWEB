@@ -58,6 +58,7 @@
     <Compile Include="Entities\ParticipantInfo.cs" />
     <Compile Include="Entities\Users.cs" />
     <Compile Include="Entities\ValidateUser.cs" />
+    <Compile Include="Entities\LoginAttempts.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
