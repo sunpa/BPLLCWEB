@@ -189,8 +189,6 @@ namespace BPLLCWEB.Controllers
         [HttpPost]
         public ActionResult Login(string username, string password)
         {
-            //string username = Request["username"];
-            //string password = Request["password"];
             string ipaddress = Request.Params["REMOTE_ADDR"];
 
             // for testing
@@ -198,7 +196,7 @@ namespace BPLLCWEB.Controllers
 
             try
             {
-                if (!String.IsNullOrEmpty(username))
+                if (!String.IsNullOrEmpty(username) && !String.IsNullOrEmpty(password))
                 {
                     // determine lock first
                     if (Linqs.DetemineLock(ipaddress))

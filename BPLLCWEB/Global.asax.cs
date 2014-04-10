@@ -8,6 +8,7 @@ using System.Web.Optimization;
 using System.Web.Routing;
 using System.Data.Entity;
 using BPLLCWEB.Domain.Concrete;
+using System.Configuration;
 
 namespace BPLLCWEB
 {
@@ -24,6 +25,15 @@ namespace BPLLCWEB
             ControllerBuilder.Current.SetControllerFactory(new NinjectControllerFactory());
 
             Database.SetInitializer<EFDbContext>(null);
+        }
+
+        protected void Application_BeginRequest()
+        {
+            if (!Context.Request.IsSecureConnection)
+                if (ConfigurationManager.AppSettings["SecureSite"] == "1")
+                {
+                    Response.Redirect(Context.Request.Url.ToString().Replace("http:", "https:"));
+                }
         }
     }
 }
