@@ -163,6 +163,7 @@
     <Compile Include="App_Start\RouteConfig.cs" />
     <Compile Include="App_Start\Startup.Auth.cs" />
     <Compile Include="Classes\Linqs.cs" />
+    <Compile Include="Controllers\CUController.cs" />
     <Compile Include="Helpers\ArithmeticCaptcha.cs" />
     <Compile Include="Helpers\HtmlHelpers.cs" />
     <Compile Include="Classes\Reusables.cs" />
@@ -267,6 +268,8 @@
     <Content Include="Views\Home\ForgottenPassword.cshtml" />
     <Content Include="Views\Home\SecretQA.cshtml" />
     <Content Include="Views\Home\Login.cshtml" />
+    <Content Include="Views\Shared\_CULayout.cshtml" />
+    <Content Include="Views\CU\Index.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

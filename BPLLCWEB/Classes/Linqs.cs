@@ -58,6 +58,12 @@ namespace BPLLCWEB.Classes
 
                 if (login != null)
                 {
+                    // To DO: log the logging info
+
+
+                    // create login session
+                    HttpContext.Current.Session.Add("LoggedUser", login);
+                    
                     valid = true;
                 }
             }

@@ -154,8 +154,8 @@ namespace BPLLCWEB.Controllers
                     {
                         // validate login
                         if (Linqs.ValidateLogin(username, password))
-                        {
-                            return RedirectToAction("WhoWeAre");
+                        {                           
+                            return RedirectToAction("Index", "CU");
                         }
                         else
                         {
@@ -181,8 +181,13 @@ namespace BPLLCWEB.Controllers
             }
         }
 
-        public ActionResult Login()
+        public ActionResult Login(int id)
         {
+            if (id == 1)
+            {
+                TempData["Message"] = "Your session has expired. Please log in again.";
+            }
+
             return View();
         }
 
@@ -212,7 +217,7 @@ namespace BPLLCWEB.Controllers
                         // validate login
                         if (Linqs.ValidateLogin(username, password))
                         {
-                            return RedirectToAction("WhoWeAre");
+                            return RedirectToAction("Index", "CU");
                         }
                         else
                         {

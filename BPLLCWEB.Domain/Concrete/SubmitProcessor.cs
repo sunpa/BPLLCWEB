@@ -159,10 +159,10 @@ namespace BPLLCWEB.Domain.Concrete
 
         }
 
-        public void ProcessNewPassword(ValidateUser user)
-        {
+        //public void ProcessNewPassword(ValidateUser user)
+        //{
 
-        }
+        //}
 
         public void ProcessHackAttemptEmail(string ipaddress, string username, string password)
         {

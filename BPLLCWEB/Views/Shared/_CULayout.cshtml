@@ -1,0 +1,85 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+    <meta http-equiv="X-UA-Compatible" content="IE =Edge" />
+    <meta charset="utf-8" />
+
+    <title>@ViewBag.Title</title>
+    <link rel="shortcut icon" media="all" type="image/x-icon" href="@Url.Content("~/images/favicon.ico")" />
+    <link href="@Url.Content("~/Content/Site.css")" rel="stylesheet" type="text/css" />
+
+    <link href="~/Content/jquery-ui.css" rel="stylesheet" />
+
+    <script src="@Url.Content("~/Scripts/jquery-1.10.2.min.js")" type="text/javascript"></script>
+    <script src="@Url.Content("~/Scripts/modernizr-2.6.2.js")" type="text/javascript"></script>
+    <script src="@Url.Content("~/Scripts/jquery-1.10.2.js")" type="text/javascript"></script>
+
+    <script src="~/Scripts/jquery-ui.js"></script>
+
+</head>
+<body>
+    <div class="page">
+
+        <header>
+            <div id="banner">
+                <table width="960">
+                    <tr>
+
+                        <td>
+                            <a href="/"><img src="/images/HomepageTopBanner.gif" width="319" height="50" title="Home" id="homepagetopbanner" border="0" /></a>
+                        </td>
+
+                    </tr>
+                </table>
+            </div>
+
+
+        </header>
+
+        <section id="main">
+            @RenderBody()
+        </section>
+        <table border="0">
+            <tr><td height="10"></td></tr>
+        </table>
+
+        <div id="beforefooter">
+            <table>
+                <tr>
+                    <td style="vertical-align: top;">
+                        <div id="picture">
+                            <a class="small" href="#nogo" title="AICPA small image">
+                                <img src="/images/aicpa-soc-logo - small.jpg" title="AICPA small image" />
+                                <img class="large" src="/images/aicpa-soc-logo.jpg" title="AICPA large image" />
+                            </a>
+                        </div>
+                    </td>
+                    <td style="vertical-align: top; width: 150px;"></td>
+                    <td style="vertical-align: top">
+                        <script type="text/javascript" src="https://seal.thawte.com/getthawteseal?host_name=www.businesspartnersllc.com&amp;size=S&amp;lang=en"></script>
+                    </td>
+                </tr>
+                <tr><td height="48" colspan="2"></td></tr>
+            </table>
+        </div>
+
+        <div id="footer_container">
+            <footer id="footer">
+                &copy;2014. CU Business Partners, LLC operating as Business Partners.
+                <span class="top_link" onclick="">
+                    ▲&nbsp;&nbsp;Top
+                </span>
+            </footer>
+        </div>
+
+    </div>
+</body>
+</html>
+
+<script type="text/javascript">
+    $(document).ready(function () {
+
+    });
+
+
+</script>

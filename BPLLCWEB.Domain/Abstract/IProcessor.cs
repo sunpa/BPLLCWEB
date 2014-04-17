@@ -21,5 +21,6 @@ namespace BPLLCWEB.Domain.Abstract
 
         void ProcessHackAttemptEmail(string ipaddress, string username, string password);
 
+        //void ProcessLoginLog(string username, string ipaddress, string creditunion, string charternumber);
     }
 }
