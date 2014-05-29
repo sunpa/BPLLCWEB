@@ -48,7 +48,7 @@ namespace BPLLCWEB.Controllers
         public ActionResult Index()
         {
 
-            var login = System.Web.HttpContext.Current.Session["LoggedUser"];
+            Logins login = (Logins)System.Web.HttpContext.Current.Session["LoggedUser"];
 
             //if (login != null)
             //{
@@ -59,6 +59,8 @@ namespace BPLLCWEB.Controllers
             //    TempData["Message"] = "Your session has expired. Please login again.";
             //    return RedirectToAction("Login", "Home");
             //}
+
+            TempData["UserName"] = login.UserName;
 
             return View();
         }

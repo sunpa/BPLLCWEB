@@ -2,7 +2,8 @@
 @{
     ViewBag.Title = "Index";
     Layout = "~/Views/Shared/_CULayout.cshtml";
+    string username = Convert.ToString(TempData["UserName"]);
 }
 
-<h2>CU Index</h2>
+<h2>@username</h2>
 
